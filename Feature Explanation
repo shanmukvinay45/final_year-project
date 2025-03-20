@@ -1,0 +1,138 @@
+Phishing Website Detection - Feature Explanation
+Each feature is represented by a categorical signed numeric value:
+
+1 → Likely safe/legitimate
+0 → Neutral (if applicable)
+-1 → Likely phishing/malicious
+
+1. UsingIP
+✅ 1 → The URL contains an IP address instead of a domain (phishing).
+✅ -1 → The URL uses a proper domain name (legitimate).
+
+2. LongURL
+✅ 1 → The URL is unusually long (possible phishing).
+✅ 0 → The URL has a moderate length.
+✅ -1 → The URL is short (legitimate).
+
+3. ShortURL
+✅ 1 → The URL is shortened using services like bit.ly or tinyurl (possible phishing).
+✅ -1 → The URL is not shortened (legitimate).
+
+4. Symbol@
+✅ 1 → The URL contains '@', which can mislead users (possible phishing).
+✅ -1 → No '@' symbol is present (legitimate).
+
+5. Redirecting//
+✅ 1 → The URL contains ‘//’ after the protocol, indicating redirection (phishing).
+✅ -1 → No redirection observed (legitimate).
+
+6. PrefixSuffix-
+✅ 1 → The domain contains hyphens, common in phishing URLs.
+✅ -1 → No hyphens in the domain (legitimate).
+
+7. SubDomains
+✅ 1 → Too many subdomains (e.g., www.secure.login.bank.com, possible phishing).
+✅ 0 → A moderate number of subdomains.
+✅ -1 → Few or no subdomains (legitimate).
+
+8. HTTPS
+✅ 1 → Secure HTTPS protocol is used (safer).
+✅ 0 → Cannot be determined.
+✅ -1 → No HTTPS (potential phishing).
+
+9. DomainRegLen
+✅ 1 → The domain is registered for a long period (legitimate).
+✅ -1 → Short registration period (possible phishing).
+
+10. Favicon
+✅ 1 → The favicon is loaded from the same domain (legitimate).
+✅ -1 → The favicon is loaded from an external source (possible phishing).
+
+11. NonStdPort
+✅ 1 → Uses a non-standard port (possible phishing).
+✅ -1 → Uses standard ports (legitimate).
+
+12. HTTPSDomainURL
+✅ 1 → The URL contains HTTPS in the domain name (legitimate).
+✅ -1 → No HTTPS in the domain (possible phishing).
+
+13. RequestURL
+✅ 1 → Most content (images, scripts) is from the same domain (legitimate).
+✅ -1 → Content is mostly from external domains (possible phishing).
+
+14. AnchorURL
+✅ 1 → Most links point to the same domain (legitimate).
+✅ 0 → Moderate external linking.
+✅ -1 → Most links point to other domains (possible phishing).
+
+15. LinksInScriptTags
+✅ 1 → Few suspicious links in <script> tags (legitimate).
+✅ 0 → Moderate number of suspicious links.
+✅ -1 → Many external or hidden script links (possible phishing).
+
+16. ServerFormHandler
+✅ 1 → The form submits data to the same domain (legitimate).
+✅ 0 → Cannot be determined.
+✅ -1 → Form submits data to an external domain (possible phishing).
+
+17. InfoEmail
+✅ 1 → No email address is detected (safer).
+✅ -1 → Email address is found (possible phishing).
+
+18. AbnormalURL
+✅ 1 → URL structure is normal (legitimate).
+✅ -1 → Abnormal structure (possible phishing).
+
+19. WebsiteForwarding
+✅ 1 → Multiple redirections detected (phishing).
+✅ 0 → No or limited redirections (legitimate).
+
+20. StatusBarCust
+✅ 1 → The status bar is customized (possible phishing).
+✅ -1 → Normal status bar (legitimate).
+
+21. DisableRightClick
+✅ 1 → Right-click is disabled (possible phishing).
+✅ -1 → Right-click is enabled (legitimate).
+
+22. UsingPopupWindow
+✅ 1 → Pop-ups are used (potential phishing).
+✅ -1 → No pop-ups (legitimate).
+
+23. IframeRedirection
+✅ 1 → Uses iframes to embed another website (possible phishing).
+✅ -1 → No iframes (legitimate).
+
+24. AgeofDomain
+✅ 1 → Domain is old and established (legitimate).
+✅ -1 → Recently registered domain (possible phishing).
+
+25. DNSRecording
+✅ 1 → DNS record is present (legitimate).
+✅ -1 → No DNS record (possible phishing).
+
+26. WebsiteTraffic
+✅ 1 → High traffic (legitimate).
+✅ 0 → Moderate traffic.
+✅ -1 → Low or no traffic (possible phishing).
+
+27. PageRank
+✅ 1 → Good Google PageRank (legitimate).
+✅ -1 → Low or no PageRank (possible phishing).
+
+28. GoogleIndex
+✅ 1 → Indexed by Google (legitimate).
+✅ -1 → Not indexed (possible phishing).
+
+29. LinksPointingToPage
+✅ 1 → Many backlinks (legitimate).
+✅ 0 → Moderate backlinks.
+✅ -1 → Few or no backlinks (possible phishing).
+
+30. StatsReport
+✅ 1 → No reports of phishing (legitimate).
+✅ -1 → Reported as phishing.
+
+31. class (Target Variable)
+✅ 1 → Legitimate website.
+✅ -1 → Phishing website.
